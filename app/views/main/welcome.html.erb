@@ -1,13 +1,71 @@
 <style>
-	div h1 {
-		background-color: #FFE5B4;
-		color: orange;
-		text-align: center;
+	body {
 		font-family: Arial;
+	}
+
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	div {
+		height: 100vh;
+		background: #bbeaff;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.container h1 {
+		font-size: 5rem;
+		color: #0288d1;
+		text-align: center;
+		padding-bottom: 25px;
+	}
+
+	.button {
+		margin-top: 50px;
+		width: 175px;
+		height: 50px;
+		border-radius: 10px;
+		background-color: #1167b1;
+		color: white;
+		padding: 15px 10px;
+		text-align: center;
+		font-size: 1.2rem;
+	}
+
+	.button:hover {
+		background-color: #72d3fe;
+	}
+
+	.button:hover {
+		color: black;
+	}
+
+	.text-primary {
+		color: #01579b !important;
+	}
+
+	a, a:visited {
+		text-decoration: none;
+		color: white;
+	}
+
+	p {
+		font-size: 30px;
 	}
 </style>
 
 <div>
-	<h1>Welcome To My World</h1>
+	<div class="container">
+		<h1><span class="text-primary">Welcome</span> To My Website</h1>
+		<p>This is my first website with Ruby on Rails.</p>
+		<a href="/contact_us"><div class="button">Contact us</div></a>
+	</div>
 </div>
-<p>This is my first website on Ruby on Rails LoL</p>

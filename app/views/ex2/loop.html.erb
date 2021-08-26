@@ -1,1 +1,41 @@
-<p>Loop Page</p>
+<style>
+	.warning {
+		color: red;
+		font-weight: bold;
+		font-size: 1.4rem;
+	}
+</style>
+
+<% 
+	def is_numeric(n)
+		return true if Integer(n) rescue false
+	end
+
+	a_validated = true
+	b_validated = true
+
+  	if (!params.has_key?(:a) or !is_numeric(params[:a])) 
+  		a_validated = false
+  	end
+
+  	if (!params.has_key?(:b) or !is_numeric(params[:b])) 
+  		b_validated = false
+  	end
+
+  	if (a_validated and b_validated)
+  		a = params[:a].to_i
+  		b = params[:b].to_i
+  	end
+%>
+
+<% if !a_validated and !b_validated %>
+	<p class="warning">Both a and b is missing or not an integer</p>
+<% elsif !a_validated %>
+	<p class="warning">a is missing or not an integer</p>
+<% elsif !b_validated %>
+	<p class="warning">b is missing or not an integer</p>
+<% else %>
+	<% for i in a..b%>
+		<p><%= i %></p>
+	<% end%>
+<% end %>
