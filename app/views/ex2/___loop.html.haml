@@ -1,0 +1,30 @@
+:css
+  .warning {
+  	color: red;
+  	font-weight: bold;
+  	font-size: 1.4rem;
+  }
+- def is_numeric(n)
+- return true if Integer(n) rescue false
+- end
+- a_validated = true
+- b_validated = true
+- if (!params.has_key?(:a) or !is_numeric(params[:a]))
+- a_validated = false
+- end
+- if (!params.has_key?(:b) or !is_numeric(params[:b]))
+- b_validated = false
+- end
+- if (a_validated and b_validated)
+- a = params[:a].to_i
+- b = params[:b].to_i
+- end
+- if !a_validated and !b_validated
+  %p.warning Both a and b is missing or not an integer
+- elsif !a_validated
+  %p.warning a is missing or not an integer
+- elsif !b_validated
+  %p.warning b is missing or not an integer
+- else
+  - for i in a..b
+    %p= i

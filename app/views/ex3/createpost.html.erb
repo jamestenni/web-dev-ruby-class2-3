@@ -1,0 +1,113 @@
+<style>
+	* {
+		font-family: "Arial";
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		background-color: #242424;
+		margin: 20px;
+	}
+
+	h1 {
+		margin-bottom: 20px;
+	}
+
+	.warning {
+		color: #BE375F;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.success {
+		color: #A2D5AB;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.post-block {
+		display: flex;
+		flex-direction: column;
+		width: 700px;
+		background-color: #1F9CE4;
+		padding: 20px;
+		margin: 20px;
+		border-radius: 10px;
+		box-shadow: 5px 5px rgba(136,244,255)
+	}
+
+	.post-block:hover {
+		background-color: #57ACDE;
+		box-shadow: 5px 5px #8FDDE5
+	}
+
+	.post-block h4 {
+		font-size: 1.4rem;
+	}
+
+	.inner-post-block {
+		margin: 20px 20px;
+		background-color: rgba(136,244,255,0.5);
+		padding: 20px;
+		border-radius: 10px;
+	}
+
+	.inner-post-block:hover {
+		background-color: 
+	}
+
+	.post-block small {
+		text-align: right;
+		color: white;
+	}
+
+	.bottom {
+		width: 700px;
+		margin: 20px;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	.bottom a {
+		text-decoration: none;
+	}
+
+	.button {
+		width: 150px;
+		height: 30px;
+		border-radius: 10px;
+		background-color: #1167b1;
+		color: white;
+		padding: 5px 8px;
+		text-align: center;
+		font-size: 0.9rem;
+		font-weight: bold;
+	}
+
+</style>
+
+<h1 style="color:white">Welcome to /post/create</h1>
+
+<% if !@msg_ok and !@user_id_ok%>
+	<p class="warning"> There is something wrong with your message and user_id!!!</p>
+<% elsif !@user_id_ok%>
+	<p class="warning"> There is something wrong with your user_id! </p>
+<% elsif !@msg_ok%>
+	<p class="warning"> There is something wrong with your message!</p>
+<% else %>
+	<h3 class="success"> System has successfully created a post! </h3>
+	<div class="post-block">
+		<h4> <%= @user.name %> has created a post!</h4>
+		<div class="inner-post-block">
+			<p> <%= @msg %> </p>
+		</div>
+		<small>at: <%= @post.created_at.to_s %></small>
+	</div>
+	<div class="bottom">
+		<% link = "/user/read?user_id="+@user_id.to_s%>
+		<a href=<%= link %>><div class="button">SEE ALL POSTS</div></a>
+	</div>
+<% end %>

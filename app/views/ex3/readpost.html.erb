@@ -1,0 +1,109 @@
+<style>
+	* {
+		font-family: "Arial";
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		background-color: #242424;
+		margin: 20px;
+	}
+
+	h1 {
+		margin-bottom: 20px;
+	}
+
+	.warning {
+		color: #BE375F;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.success {
+		color: #A2D5AB;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	.container {
+		padding: 20px;
+		margin: 20px;
+		background-color: #88ADE0;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		width: 750px;
+	}
+
+	.container-header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+		font-size: 1.4rem;
+		margin-bottom: 10px;
+	}
+
+	.container-header #total-posts {
+		align-self: flex-end;
+	}
+
+	.post-block {
+		display: flex;
+		flex-direction: column;
+		width: 700px;
+		background-color: #1F9CE4;
+		padding: 10px;
+		margin: 10px;
+	}
+
+	.post-block:hover {
+		background-color: #57ACDE;
+		box-shadow: 5px 5px #8FDDE5
+	}
+
+	.inner-post-block {
+		margin: 20px 20px;
+		background-color: rgba(136,244,255,0.5);
+		padding: 20px;
+		border-radius: 10px;
+	}
+
+	.inner-post-block:hover {
+		background-color: 
+	}
+
+	.post-block small {
+		text-align: right;
+		color: white;
+	}
+
+</style>
+
+<h1 style="color:white">Welcome to /user/read</h1>
+
+<% if !@user_id_ok %>
+	<p class="warning"> The User_id doesn't exist or missing!!!</p>
+<% else %>
+	<h3 class="success"> System has successfully read posts! </h3>
+	<div class="container">
+		<div class=container-header>
+			<h4> <%= @user.name %>'s posts!</h4>
+			<div id="total-posts"> Total Post: <%= @user_posts.length %></div>
+		</div>
+		<% if @user_posts.length != 0 %>
+			<% @user_posts.reverse().each do |post| %>
+				<div class="post-block">
+					<div class="inner-post-block">
+						<p> <%= post.msg %> </p>
+					</div>
+					<small>at: <%= post.created_at.to_s %></small>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+	</div>
+<% end %>
+

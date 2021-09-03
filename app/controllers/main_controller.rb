@@ -13,4 +13,9 @@ class MainController < ApplicationController
 
   def contact
   end
+
+  def test
+    a = params[:id]
+    @u = User.find(a)
+  end
 end
